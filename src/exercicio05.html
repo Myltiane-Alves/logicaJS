@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de imc</title>
+    <style type="text/css>">
+
+        img {
+            float: left;
+            height: 300px;
+            width: 300px;
+        }
+        h1 {
+            border-bottom-style: inset
+        }
+
+    </style>
+    
+    
+    
+</head>
+<body>
+    <img src="" alt="imagem de um homem">
+    <h1>Progama Calculo do Peso Ideal</h1>
+    <p>Nome:
+        <input type="text" id="inName" />
+    </p>
+
+    <p>Sexo:
+        <input type="radio" id="rbM"/> Masculino
+        <input type="radio" id="rbF"/> Femenino
+    </p>
+  
+
+    
+    <P>Altura
+        <input type="text" id="inAltura" />
+    </P>
+    <p>
+        <input type="button" value="Calcular Peso Ideal" id="btCalc"/>
+        <input type="button" value="Limpar Campos" id="btClear"/>
+    </p>
+    <h3 id="outResposta"></h3>
+ 
+    <script>
+        /* 
+            Elaborar um programa que leia 2 notas de um aluno em uma disciplina.
+            Calcule e informe a média das notas
+        */
+        /* lê o valor de entrada*/
+       
+        let inName = document.getElementById("inName")
+        let inNota1 = document.getElementById("inNota1")
+        let inNota2 = document.getElementById("inNota2")
+        let outSituation = document.getElementById("outSituation")
+        let outMeda = document.getElementById("outMedia")
+
+        // obtém os conteúdos dos campos de edição da página
+        let name = inName.value
+        let nota1 = Number(inNota1.value)
+        let nota2 = Number(inNota2.value)
+
+        // calcula média das notas
+        let media = (nota1 + nota2) / 2;
+
+        //Apresenta a média ( altera o conteúdo do elemento outMédia)
+        outMedia.textContent = "Média das Notas: " + media.toFixed(1);
+
+        // criar a condição
+        if(media >= 7) {
+            outSituation.textContent = "Parabéns" + name + "!Você goi aprovado(a)";
+            outSituation.style.color= "blue"
+        } else if(media >= 4) {
+            outSituation.textContent = "Atenção " + name + ".Você está em exame";
+            outSituation.style.color = "green";
+        } else {
+            outSituation.textContent = "Ops " + name + "...você foi reprovado(a)"
+            outSituation.style.color = "red"
+        }
+    </script>
+</body>
+</html>
