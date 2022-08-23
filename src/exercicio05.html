@@ -29,8 +29,8 @@
     </p>
 
     <p>Sexo:
-        <input type="radio" id="rbM"/> Masculino
-        <input type="radio" id="rbF"/> Femenino
+        <input type="radio" id="rbMasculino"/> Masculino
+        <input type="radio" id="rbFeminino"/> Femenino
     </p>
   
 
@@ -39,46 +39,61 @@
         <input type="text" id="inAltura" />
     </P>
     <p>
-        <input type="button" value="Calcular Peso Ideal" id="btCalc"/>
+        <input type="button" value="Calcular Peso Ideal" id="btCalcular"/>
         <input type="button" value="Limpar Campos" id="btClear"/>
     </p>
     <h3 id="outResposta"></h3>
  
     <script>
-        /* 
-            Elaborar um programa que leia 2 notas de um aluno em uma disciplina.
-            Calcule e informe a média das notas
-        */
-        /* lê o valor de entrada*/
        
-        let inName = document.getElementById("inName")
-        let inNota1 = document.getElementById("inNota1")
-        let inNota2 = document.getElementById("inNota2")
-        let outSituation = document.getElementById("outSituation")
-        let outMeda = document.getElementById("outMedia")
+       function calcularPeso() {
 
-        // obtém os conteúdos dos campos de edição da página
-        let name = inName.value
-        let nota1 = Number(inNota1.value)
-        let nota2 = Number(inNota2.value)
+        let inName = document.getElementById("inName");
+        let rbMasculino = document.getElementById("rbMasculino");
+        let rbFeminino = document.getElementById("rbFeminino");
+        let inAltura = document.getElementById("inAltura");
+        let outResposta = document.getElementById("outResposta");
 
-        // calcula média das notas
-        let media = (nota1 + nota2) / 2;
+        let name = inName.value;
+        let masculino = rbMasculino.checked;
+        let feminino = rbFeminino.checked;
+        let altura = Number(inAltura.value);
 
-        //Apresenta a média ( altera o conteúdo do elemento outMédia)
-        outMedia.textContent = "Média das Notas: " + media.toFixed(1);
-
-        // criar a condição
-        if(media >= 7) {
-            outSituation.textContent = "Parabéns" + name + "!Você goi aprovado(a)";
-            outSituation.style.color= "blue"
-        } else if(media >= 4) {
-            outSituation.textContent = "Atenção " + name + ".Você está em exame";
-            outSituation.style.color = "green";
-        } else {
-            outSituation.textContent = "Ops " + name + "...você foi reprovado(a)"
-            outSituation.style.color = "red"
+        if( name == " " || (masculino == false && feminino == false)) {
+            alert("Por favor, informe o nome e selecione o sexo...");
+            inName.focus(); //posiciona (joga o foco)no campo de edição inName
+            return;
         }
+
+        if(altura == 0 || isNaN(altura)) {
+            alert("Porfavor Digite uma altura correta");
+            inAltura.focus();
+            return;
+        }
+
+        if(masculino) {
+            let peso = 22 * Math.pow(altura, 2) // Math.pow = potenciação eleva ao quadrado
+        } else {
+            let peso = 21 * Math.pow(altura, 2)
+        }
+
+        outResposta.textContent = name + ", seu peso ideal é " + peso.toFixed(3) + "Kg";
+      }
+    
+        let btResultado = document.getElementById("btCalcular");
+        btCalcular.addEventListener("click", calcularPeso);
+       
+      function limparCampos() {
+        document.getElementById("inName").value = "";
+        document.getElementById("rbMasculino").checked = false;
+        document.getElementById("rbFeminino").checked = false;
+        document.getElementById("inAltura").value = "";
+        document.getElementById("outResposta").textContent = "";
+        //  posiciona (joga o foco)no campo de edição inName
+        document.getElementById("inName").focus();
+      }
+        let btClear = document.getElementById("btClear");
+        btClear.addEventListener("click", limparCampos);
     </script>
 </body>
 </html>
