@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de imc</title>
+    <style type="text/css>">
+
+        img {
+            float: left;
+            height: 300px;
+            width: 300px;
+        }
+        h1 {
+            border-bottom-style: inset
+        }
+
+    </style>
+    
+    
+    
+</head>
+<body>
+    <img src="" alt="imagem de um homem">
+    <h1>Progama Fuso Horário</h1>
+    <p>Hora no brasil
+        <input type="text" id="inHoraBrasil" />
+    </p>
+    <p>
+        <input type="button" value="Exibir Hora na França" id="btExibir"/> 
+    </p>
+    <h3 id="outHoraFranca"></h3>
+ 
+    <script>
+    
+        function exibirHora() {
+        let inHoraBrasil = document.getElementById("inHoraBrasil");
+        let outHoraFranca = document.getElementById("outHoraFranca");
+        let horaBrasil = Number(inHoraBrasil.value);
+
+        if(inHoraBrasil.value == "" || isNaN(horaBrasil)) {
+        alert("Informe a hora no Brasil");
+        inHoraBrasil.focus(); // posiciona em inhOraBrasil
+        return;
+        }
+        let horaFranca = horaBrasil + 5; //calcula a hora na franca
+        
+        // se passar das 24 horas na 
+        
+        if(horaFranca > 24) {
+        horaFranca = horaFranca - 24;
+        }
+
+        // exibe resposta (altera cibteúdo do elemento outHoraFranca)
+        outHoraFranca.textContent = "Hora na França: " + horaFranca.toFixed(2);
+        }
+       
+        let btExibir = document.getElementById("btExibir");
+        btExibir.addEventListener("click", exibirHora);
+    </script>
+</body>
+</html>
