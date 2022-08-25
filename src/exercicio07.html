@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Calculo de imc</title>    
+</head>
+<body>
+    <img src="img/ex3_5.jpg" alt="Raiz Quadrada">
+    <h1>Progama Raiz Quadrada</h1>
+    <p>Número:
+        <input type="text" id="inNumero" />
+    </p>
+    <p>
+        <input type="button" value="Exibir Raiz Quadrada" id="btExibir"/> 
+    </p>
+    <h3 id="outResposta"></h3>
+ 
+    <script>
+    
+        function calcularRaiz() {
+            // crindando referencia aos elementos da pagina
+            let inNumero = document.getElementById("inNumero");
+            let outResposta = document.getElementById("outResposta");
+
+            let numero = Number(inNumero.value); // obtém e converte conteúdo do campo innumero
+
+            // se não preencheu ou not a number
+            if(numero == 0 || isNaN(numero)) {
+                alert("Informe um número válido...")
+                inNumero.focus();
+                return;
+            }
+            
+            let raiz = Math.sqrt(numero); //calcula a raiz quadrada
+
+            // se o valor da variável raiz iguala este valor arredondado para baixo
+            if(raiz == Math.floor(raiz)) {
+                outResposta.textContent = "Raiz Quadrada: " +  raiz; // exibe a raiz quadrada
+            } else {
+                // senão, exibe a mensagem indicando que não há raiz exata
+                outResposta.textContent = "Não há raiz exata " + numero;
+            }
+        }
+        // cria referencia ao elemento btExibir e registra evento que irá carregar function
+       
+        let btExibir = document.getElementById("btExibir");
+        btExibir.addEventListener("click", calcularRaiz);
+    </script>
+</body>
+</html>
