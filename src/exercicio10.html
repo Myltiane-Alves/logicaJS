@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>exercicio 3.b</title>    
+</head>
+<body>
+    <img src="img/exerc.jpg" alt="Computador">
+    <h1>Programa Verifica Velocidade</h1>
+    <p>Velocidade Permitida: 
+        <input type="text" id="inVelPermitida" />
+    </p>
+    <p>Velocidade do Condutor: 
+        <input type="text" id="inVelCondutor" />
+    </p>
+    <p>
+        <input type="button" value="Verifica velocidade" id="btVerificar"/> 
+    </p>
+    <h3 id="outResposta"></h3>
+  
+    <script>
+    
+        function verificarMulta() {
+            // crindando referencia aos elementos da pagina
+            let inVelPermitida = document.getElementById("inVelPermitida");
+            let inVelCondutor = document.getElementById("inVelCondutor");
+            let outResposta = document.getElementById("outResposta");
+           
+
+            // limpa mensagens (caso,segunda execução)
+       
+
+            // obtém e converte conteúdo dos campo 
+            let velPermitida = Number(inVelPermitida.value); 
+            let velCondutor = Number(inVelCondutor.value); 
+
+            // se não preencheu ou not a number
+            if(inVelPermitida.value == "" || isNaN(velPermitida) ||
+                inVelCondutor.value == "" || isNaN(velCondutor)) {
+                alert("Informe as velocidades corretamente...");
+                inVelPermitida.focus();
+                return;
+            }
+            
+            if(velCondutor <= velPermitida) {
+                outResposta.textContent = "Situação: Sem Multa";
+            } else {
+                let maisVinte = velPermitida * 1.20;
+                if(velCondutor <= maisVinte) {
+                    outResposta.textContent = "Situação: Multa Leve";
+                } else {
+                    outResposta.textContent = "Situação: Multa Grave";
+                }
+            }
+             
+            
+
+        }
+        // cria referencia ao elemento btExibir e registra evento que irá carregar function
+       
+        let btExibir = document.getElementById("btExibir");
+        btExibir.addEventListener("click", verificarMulta);
+    </script>
+</body>
+</html>
