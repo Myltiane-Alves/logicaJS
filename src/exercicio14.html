@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 4.2</title>
+</head>
+
+<body>
+  <img src="img/ex4_2.jpg" alt="Computador">
+  <h1>Programa Números Decrescentes </h1>
+  <p>Número: 
+    <input type="text" id="inNumero" />
+  </p>
+
+  <input type="button" value="Decrescer até 1" id="btDecrescer">
+  <h3 id="outResposta"></h3>
+
+  <script>
+
+    function listarNumeros() {
+
+
+      var inNumero = document.getElementById("inNumero");
+      var outResposta = document.getElementById("outResposta");
+
+
+      // converte o conteúdo de inNumero para número
+      var numero = Number(inNumero.value);
+
+
+      // valida os dados de entrada
+      if (numero == 0 || isNaN(numero)) {
+        alert("Informe um número válido...");
+        inNumero.focus();
+        return;
+      }
+
+      // cria uma variável do tipo string, que irá concatenar a resposta
+      var resposta = "Entre " + numero + " e 1:";
+     
+    // cria um for decrescente
+    for(let i = numero; i > 0; i = i - 1) { 
+      // resposta vai acumulando os números e vírgulas
+      resposta = resposta  + i + " , ";
+    }
+
+    // altera o conteúdo de outResposta
+    outResposta.textContent = resposta;
+  }
+
+    let btDecrescer = document.getElementById("btDecrescer");
+    btDecrescer.addEventListener("click", listarNumeros);
+  </script>
+</body>
+
+</html>

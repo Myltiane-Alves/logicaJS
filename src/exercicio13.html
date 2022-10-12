@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 3.b</title>
+</head>
+
+<body>
+  <img src="img/exerc.jpg" alt="Computador">
+  <h1>Programa de Tabuada </h1>
+  <p>Escolha um número para ver a tabuada
+    <input type="text" id="inNumero" />
+  </p>
+
+  <input type="button" value="Mostrar Tabuada" id="btMostrar">
+  <pre id="outTabuada"></pre>
+
+  <script>
+
+    function mostrarTabuada() {
+
+
+      var inNumero = document.getElementById("inNumero");
+      var outTabuada = document.getElementById("outTabuada");
+
+
+      // converte o conteúdo de inNumero para número
+      var numero = Number(inNumero.value);
+
+
+      // valida os dados de entrada
+      if (numero == 0 || isNaN(numero)) {
+        alert("Informe um número válido...");
+        inNumero.focus();
+        return;
+      }
+
+      // cria uma variável do tipo string, que irá concatenar a resposta
+      var resposta = "";
+     
+    // cria um laço de repetição
+    for(let i = 1; i <= 10; i++) {
+      // variável resposta recebe a tabuada
+      resposta = resposta + numero + " X " + i + " = " + numero * i + "\n";
+    }
+
+    // o conteúdo da tag outTabuada recebe a variável resposta
+    outTabuada.textContent = resposta;
+  }
+
+    let btMostrar = document.getElementById("btMostrar");
+    btMostrar.addEventListener("click", mostrarTabuada);
+  </script>
+</body>
+
+</html>

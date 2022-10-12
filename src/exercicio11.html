@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>exercicio 3.b</title>    
+</head>
+<body>
+    <img src="img/exerc.jpg" alt="Computador">
+    <h1>Programa Parquíetro</h1>
+    <p>Valor da Hora:: 
+        <input type="text" id="inValor" />
+    </p>
+    <p>
+        <input type="button" value="Verifica preco da hora" id="btCalcular"/> 
+    </p>
+    <h3 id="outTempo"></h3>
+    <h3 id="outTroco"></h3>
+  
+    <script>
+    
+        function CalcularValorHora() {
+            // crindando referencia aos elementos da pagina
+            let inValorHora = document.getElementById("inValor");      
+            let outTempo = document.getElementById("outTempo");
+            let outTroco = document.getElementById("outTroco");
+           
+
+            // limpa mensagens (caso,segunda execução)
+            let valor = Number(inValorHora.value);
+
+            if (valor == 0 || isNaN(valor)) {
+                alert("Informe um valor válido de moedas");
+                inValorHora.focus();
+                return;
+            }
+        
+            
+            if(valor < 1.00) {
+                alert("Valor Insuficiente (valor mínimo, R$1.00) ")
+                inValorHora.focus();
+                return;
+            }
+
+            // obtém e converte conteúdo dos campo 
+            let tempo; 
+            let troco; 
+            
+            if (valor >= 3.00) {
+                tempo = 120;
+                troco = valor - 3.00;
+            } else if (valor >= 1.75) {
+                tempo = 60;
+                troco = valor - 1.75;
+            } else {
+                tempo = 30;
+                troco = valor - 1.00;
+            }
+             
+            
+            // exibe resultado
+            outTempo.textContent = "Troco R$: " + troco.toFixed(2);
+            if (troco > 0) {
+                ouTroco.textContent = "Troco R$: " + troco.toFixed(2);
+            }
+        }
+        // cria referencia ao elemento btExibir e registra evento que irá carregar function
+       
+        let btExibir = document.getElementById("btCalcular");
+        btExibir.addEventListener("click", CalcularValorHora);
+    </script>
+</body>
+</html>

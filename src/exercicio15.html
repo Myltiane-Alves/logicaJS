@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 4.5</title>
+</head>
+
+<body>
+  <img src="img/ex4_5.jpg" alt="Computador">
+  <h1>Programa Contas do Mês</h1>
+  <p>Descrição da conta: 
+    <input type="text" id="inDescricao" />
+  </p>
+  <p>Valor a Pagar R$: 
+    <input type="text" id="inValor" />
+  </p>
+
+  <input type="button" value="Registra conta " id="btRegistrar">
+  <h3 id="outListarContas"></h3>
+  <h3 id="outTotal"></h3>
+
+  <script>
+
+    // declara e inicializa contadores e acumuladores (variáveis globais)
+    var numContas = 0;
+    var valTotal = 0;
+
+    // variável string que acumula as contas
+    var resposta = "";
+
+    function registrarConta() {
+
+
+      var inDescricao = document.getElementById("inDescricao");
+      var inValor = document.getElementById("inValor");
+      var outListarContas = document.getElementById("outListarContas");
+      var outTotal = document.getElementById("outTotal");
+
+
+      // obtém o conteúdo dos campos de entrada
+      var descricao = inDescricao.value;
+      var valor = Number(inValor.value);
+
+      // valida os dados de entrada
+      if (descricao == "" || valor == 0 || isNaN(valor)) {
+        alert("Informe so dados corretament...");
+        inNumero.focus();
+        return;
+      }
+
+
+    // adiciona valores ao contador 
+    numContas++;
+    valorTotal = valTotal + valor;
+
+    resposta = resposta + descricao + " - R$ "+valor.toFixed(2)+"\n";
+
+    // altera o conteúdo de outResposta
+    outListarContas.textContent = resposta = '--------------'
+    outTotal.textContent = numContas + " Contas(s) - Total R$: " + valorTotal.toFixed(2);
+    
+    // limpa os campos de entrada
+    inDescricao.value = "";
+    inValor.value = "";
+    inDescricao.focus();
+  }
+  
+    // cria uma referência ao elemento btRegistrar
+    let btRegistrar = document.getElementById("btRegistrar");
+    btRegistrar.addEventListener("click", registrarConta);
+  </script>
+</body>
+
+</html>

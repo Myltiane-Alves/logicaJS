@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 3.b</title>
+</head>
+
+<body>
+  <img src="img/exerc.jpg" alt="Computador">
+  <h1>Programa Lados de um Triângulo</h1>
+  <p>Lado A
+    <input type="text" id="inLadoA" />
+  </p>
+  <p>Lado B
+    <input type="text" id="inLadoB" />
+  </p>
+  <p>Lado C
+    <input type="text" id="inLadoC" />
+  </p>
+  <p>
+    <input type="button" value="Verifica preco da hora" id="btVerifica" />
+  </p>
+  <h3 id="outSimNao"></h3>
+  <h3 id="outTipo"></h3>
+
+  <script>
+
+    function verificarTriangulo() {
+      // obtém elementos da página
+      var inLadoA = document.getElementById("inLadoA");
+      var inLadoB = document.getElementById("inLadoB");
+      var inLadoC = document.getElementById("inLadoC");
+      var outSimNao = document.getElementById("outSimNao");
+      var outTipo = document.getElementById("outTipo");
+
+      // converte dados de entrada
+      ladoA = Number(inLadoA.value);
+      ladoB = Number(inLadoB.value);
+      ladoC = Number(inLadoC.value);
+
+      // valida os dados de entrada
+      if (ladoA == 0 || ladoB == 0 || ladoC == 0 || isNaN(ladoA) || isNaN(ladoB) || isNaN(ladoC)) {
+        alert("Informe lados válidos para o triângulo");
+        inLadoA.focus();
+        return;
+      }
+
+      // cria as condições para exibir a resposta
+      if (ladoA > ladoB + ladoC || ladoB > ladoA + ladoC || ladoC > ladoA + ladoB) {
+        outSimNao.textContent = "Lados não podem formar um triângulo";
+      } else {
+        outSimNao.textContent = "Lados podem formar um triângulo";
+        if (ladoA == ladoB && ladoA == ladoC) {
+          outTipo.textContent = "Tipo: Equilátero";
+        } else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC) {
+          outTipo.textContent = "Tipo: Isósceles";
+        } else {
+          outTipo.textContent = "Tipo: Escaleno";
+        }
+      }
+
+    }
+    // cria referencia ao elemento btExibir e registra evento que irá carregar function
+
+    let btExibir = document.getElementById("btVerifica");
+    btExibir.addEventListener("click", verificarTriangulo);
+  </script>
+</body>
+
+</html>
