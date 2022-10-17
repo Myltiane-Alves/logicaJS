@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 4.b</title>
+</head>
+
+<body>
+  <img src="img/exerc.jpg" alt="Exercícios" class="normal">
+  <h1>Programa Criação de Chinchilas</h1>
+  <p>Nº:
+    <input type="text" id="inChin">
+  </p>
+  <p>Nº Anos:
+    <input type="text" id="inAnos">
+  </p>
+  <input type="button" value="Mostrar Previsão de Chinchilas" id="btMostrar">
+  <h3 id="outEvolucao"></h3>
+
+  <script>
+    function mostrarEvolucao() {
+    
+      // criar referências aos elementos da página
+      let inChin = document.getElementById("inChin");
+      let inAnos = document.getElementById("inAnos");
+      let outEvolucao = document.getElementById("outEvolucao");
+
+      // obtém o conteúdo dos campos de entrada inFruta e inNumero
+      let chin = Number(inChin.value);
+      let anos = Number(inAnos.value);
+       
+
+      if (chin < 2 || isNaN(chin) || anos == 0 || isNaN(anos)) {
+        alert("informe corretamente os dados...")
+        inChin.focus()
+        return
+      }
+
+      // criar uma variável do tipo string que irá concatenar a resposta 
+      let resposta = '';
+      let total = chin;
+
+      // cria uma laço de repetição
+      for(let i = 1; i <= anos; i++) {
+        // adiciona uma fruta 
+        resposta = resposta + i + "º Ano " + total + " Chinchilas\n\n";
+        total = total * 3;
+      }
+
+      
+      // altera o conteúdo da tag de resposta
+      outEvolucao.textContent = resposta;
+    }
+
+    // cria uma referência ao botão btPreencher após associa função ao evento click
+    let btMostrar = document.getElementById('btMostrar');
+    btMostrar.addEventListener('click', mostrarEvolucao);
+  </script>
+</body>
+
+</html>
