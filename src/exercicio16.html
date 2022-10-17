@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 4.5</title>
+</head>
+
+<body>
+  <img src="img/ex4_6.jpg" alt="Números Primos" class="normal">
+  <h1>Programa Números Primos</h1>
+  <p>Número:
+    <input type="text" id="inNumero">
+  </p>
+  <input type="button" value="Verificar se é Primo" id="btVerificarPrimo">
+  <h3 id="outResposta"></h3>
+
+  <script>
+    function verificarPrimo() {
+      // criar referências aos elementos da página
+      let inNumero = document.getElementById("inNumero");
+      let outResposta = document.getElementById("outResposta");
+
+
+      // obtém o conteúdo dos campos de entrada
+      let num = Number(inNumero.value);
+
+      // verificando se os dados foram preenchidos corretamente
+      if (num == 0 || isNaN(num)) {
+        alert("Informe so dados corretament...");
+        inNumero.focus();
+        return;
+      }
+
+
+      // declara e inicializa variáveis
+      let divisor = 0;
+
+      // percorre os numeros divisores de 1 até o número informado
+      for(let i = 2; i <= num / 2; i++){
+        if(num % i == 0) {
+          divisor = 1;
+          break;
+        }
+      }
+
+      // se num > 1 e não tem divisor, é primo
+      if(num > 1 && !divisor) {
+        outResposta.textContent = num + " é primo";
+      } else {
+        outResposta.textContent = num + " não é primo";
+      }
+    }
+
+    // cria uma referência ao elemento btRegistrar
+    let btVerificarPrimo = document.getElementById("btVerificarPrimo");
+    btVerificarPrimo.addEventListener("click", verificarPrimo);
+  </script>
+</body>
+
+</html>
