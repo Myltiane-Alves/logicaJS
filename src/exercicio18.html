@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <img src="img/ex4_7.jpg" alt="Números Primos" class="normal">
+  <img src="img/exerc.jpg" alt="Números Primos" class="normal">
   <h1>Programa Repete Fruta</h1>
   <p>Fruta:
     <input type="text" id="inFruta">
@@ -23,11 +23,39 @@
   <script>
     function repetirFruta() {
     
+      // criar referências aos elementos da página
+      let inNumero = document.getElementById("inNumero");
+      let inFruta = document.getElementById("inFruta");
+      let outResposta = document.getElementById("outResposta");
+
+      // obtém o conteúdo dos campos de entrada inFruta e inNumero
+      let num = Number(inNumero.value);
+      let fruta = inFruta.value;  
+
+      if (fruta == '' || num == 0 || isNaN(num)) {
+        alert("informe o número ou a fruta")
+        inNumero.focus()
+        return
+      }
+
+      // irá concatenar as estrelas 
+      let resposta = '';
+
+      // cria uma laço de repetição
+      for(let i = 1; i < num; i++) {
+        // adiciona uma fruta 
+        resposta = resposta + fruta + " * ";
+      }
+
+      // isola a última fruta, para não exebir * no final
+      resposta = resposta + fruta;
+
+      outResposta.textContent = resposta;
     }
 
     // cria uma referência ao botão btPreencher após associa função ao evento click
-    let btPreencher = document.getElementById('btRepetir');
-    btrepetir.addEventListener('click', repetirFruta);
+    let btRepetir = document.getElementById('btRepetir');
+    btRepetir.addEventListener('click', repetirFruta);
   </script>
 </body>
 
