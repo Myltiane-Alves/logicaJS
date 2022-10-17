@@ -10,18 +10,47 @@
 </head>
 
 <body>
-  <img src="img/ex4_6.jpg" alt="Números Primos" class="normal">
+  <img src="img/ex4_7.jpg" alt="Números Primos" class="normal">
   <h1>Fábrica de Estrelas</h1>
   <p>Número de Símbolos:
     <input type="text" id="inNumero">
   </p>
   <input type="button" value="PreencherEspaço" id="btPreencher">
-  <h3 id="outEsoacos"></h3>
+  <h3 id="outEspacos"></h3>
 
   <script>
     function preencherEstrelas() {
+      // criar referências aos elementos da página
+      let inNumero = document.getElementById('inNumero');
+      let outEspacos = document.getElementById('outEspacos');
+
+      // obtém o conteúdo dos campos de entrada
+      let num = Number(inNumero.value); 
+
+      if(num == 0 || isNaN(num)) {
+        alert('Número inválido...');
+        inNumero.focus();
+        return;
+      }
     
+      //  declara a variável que irá concatenar as estrelas/traços
+      let estrelas = '';
+
+      // cria um laço de repetição de 1 até o número informado
+      for(let i = 1; i <= num; i++){
+        if(i % 2 == 1) {
+          estrelas = estrelas + '*';
+        } else {
+          estrelas = estrelas + '-';
+        }
+      }
+
+      outEspacos.textContent = estrelas;
     }
+
+    // cria uma referência ao botão btPreencher após associa função ao evento click
+    let btPreencher = document.getElementById('btPreencher');
+    btPreencher.addEventListener('click', preencherEstrelas);
   </script>
 </body>
 
