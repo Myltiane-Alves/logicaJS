@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>exercicio 4.c</title>
+</head>
+
+<body>
+  <img src="img/exerc.jpg" alt="Exercícios" class="normal">
+  <h1> Programa Números Perfeitos </h1>
+  <p>Número:
+    <input type="text" id="inNumero">
+  </p>
+  <input type="button" value="Verificar Se É Perfeito" id="btVerificar">
+  <h3 id="outDivisores"></h3>
+  <h3 id="outResposta"></h3>
+
+  <script>
+    function verificarPerfeito() {
+    
+      // criar referências aos elementos da página
+      let inNumero = document.getElementById("inNumero");
+      let outDivisores = document.getElementById("outDivisores")
+      let outResposta = document.getElementById("outResposta")
+
+      // obtém o conteúdo dos campos de entrada inNumero
+      let numero = Number(inNumero.value);
+        
+
+      // verifica validade do número
+      if (numero == 0 || isNaN(numero)) {
+        hLista.textContent = "informe um número válido...";
+        inNumero.focus()
+        return
+      }
+
+      //como 1 é um divisor universal, iniciamos a soma com 1
+      let soma = 1;
+      let divisores = "Divisores do " + numero + ": 1";
+
+      // percorre os possíveis divisores e acumula
+      for(let i = 2; i <= numero / 2; i++) {
+        if (numero % i == 0) {
+          divisores = divisores + " + " + i;
+          soma = soma + i ;
+        }
+      }
+      divisores = divisores + " (Soma: " + soma + ")";
+
+      // altera o conteúdo de outDuvisores
+      outDivisores.textContent = divisores;
+      
+
+      // verifica se é perfeito e exibe a resposta na tag outResposta
+      if (numero == soma) {
+        outReposta.textContent = numero = 'É um número perfeito';
+      } else {
+        outResposta.textContent = numero + 'Não é um número perfeito';
+      }
+    
+    }
+
+    // cria uma referência ao botão btPreencher após associa função ao evento click
+    let btVerificar = document.getElementById('btVerificar');
+    btVerificar.addEventListener('click', verificarPerfeito);
+  </script>
+</body>
+
+</html>
